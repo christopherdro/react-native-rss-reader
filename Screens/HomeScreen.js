@@ -86,8 +86,6 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    // console.log(FeedStore.getState());
-    // console.log(this.state.feeds);
     return (
       <ScrollView style={styles.scrollView}>
         {this.state.feeds.map((feed) => { return this._renderFeed(feed) })}
