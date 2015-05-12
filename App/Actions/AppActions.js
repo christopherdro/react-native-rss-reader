@@ -7,5 +7,11 @@ module.exports = {
       actionType: AppConstants.ADD_FEED,
       data: feed,
     });
+  },
+  removeFeed(feed) {
+    dispatcher.handleViewAction({
+      actionType: AppConstants.REMOVE_FEED,
+      data: feed,
+    });
   }
 }

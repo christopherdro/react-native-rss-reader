@@ -3,6 +3,6 @@
 var keyMirror = require('keyMirror');
 
 module.exports = keyMirror({
-  FETCH_FEEDS: true,
+  REMOVE_FEED: true,
   ADD_FEED: true,
 });
