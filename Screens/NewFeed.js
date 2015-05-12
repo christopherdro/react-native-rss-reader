@@ -58,7 +58,7 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    marginTop: 80,
+    paddingTop: 80,
     backgroundColor: '#F5FCFF',
   },
   input: {
