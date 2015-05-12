@@ -9,6 +9,7 @@ var _ = require('lodash');
 
 var {
   ActivityIndicatorIOS,
+  ActionSheetIOS,
   AsyncStorage,
   ScrollView,
   StyleSheet,
@@ -17,6 +18,15 @@ var {
   View,
 } = React;
 
+var ActionSheetIOS = require('ActionSheetIOS');
+
+var BUTTONS = [
+  'Remove Feed',
+  'Back',
+];
+
+var DESTRUCTIVE_INDEX = 0;
+var CANCEL_INDEX = 1;
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -40,12 +50,20 @@ class HomeScreen extends React.Component {
     this.setState({feeds: FeedStore.getState()});
   }
 
-  _renderLoading() {
-    if (this.state.loading) {
-      return (
-        <ActivityIndicatorIOS animated={true} size='large' style={{marginTop: 30}} />
-      )
-    }
+  _showFeedActionSheet(feed) {
+    ActionSheetIOS.showActionSheetWithOptions({
+      options: BUTTONS,
+      cancelButtonIndex: CANCEL_INDEX,
+      destructiveButtonIndex: DESTRUCTIVE_INDEX
+    },
+    (buttonIndex) => {
+      switch(buttonIndex) {
+        case 0:
+          AppActions.removeFeed(feed);
+          this.props.navigator.pop();
+          break;
+      }
+    });
   }
 
   _showFeedDetails(feed:any) {
@@ -56,6 +74,8 @@ class HomeScreen extends React.Component {
           this.props.navigator.push ({
             component: FeedDetail,
             title: feed.title,
+            rightButtonIcon: require('image!NavBarButtonSettings'),
+            onRightButtonPress: () => {this._showFeedActionSheet(feed)},
             passProps: {
               entries: entries
             }
