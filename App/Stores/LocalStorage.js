@@ -32,6 +32,7 @@ var store = createStore({
 
     switch(action.actionType) {
       case AppConstants.ADD_FEED:
+      case AppConstants.REMOVE_FEED:
         var feeds = FeedStore.getState();
         AsyncStorage.setItem(KEY, JSON.stringify(feeds), (error) => {
           store.emitChange(action);

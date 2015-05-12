@@ -25,6 +25,10 @@ var store = createStore({
         _feeds.push(_.omit(action.data, 'entries'));
         store.emitChange(action);
         break;
+      case AppConstants.REMOVE_FEED:
+        _feeds.splice(_feeds.indexOf(action.data), 1);
+        store.emitChange(action);
+        break;
     }
 
     return true;
