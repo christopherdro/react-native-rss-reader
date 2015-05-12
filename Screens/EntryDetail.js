@@ -19,7 +19,7 @@ class EntryDetail extends React.Component {
           javaScriptEnabledAndroid={true}
           onNavigationStateChange={this.onNavigationStateChange}/>        
       </View>
-    );     
+    );
   }
 };
 
@@ -35,7 +35,9 @@ var styles = StyleSheet.create({
     paddingRight: 15,
     fontWeight: 'bold',
     fontSize: 16,
-  }
+  },
+  webView: {
+  },
 });
 
 module.exports = EntryDetail;

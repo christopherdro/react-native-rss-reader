@@ -26,8 +26,8 @@ class FeedDetail extends React.Component {
 
   _renderEntries(entry:any) {
     return (
-      <TouchableHighlight 
-        underlayColor="rgba(0,0,0,.1)" 
+      <TouchableHighlight
+        underlayColor="rgba(0,0,0,.1)"
         onPress={() => { this._showEntryDetails(entry) }} >
         <View style={styles.wrapper}>
           <View style={styles.header}>

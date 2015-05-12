@@ -24,8 +24,8 @@ class RssReader extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      bootstrapped: false 
-    } 
+      bootstrapped: false
+    }
   }
 
  componentWillMount() {
@@ -33,7 +33,7 @@ class RssReader extends React.Component{
     LocalStorage.bootstrap(() => this.setState({bootstrapped: true}));
   }
 
-  render() { 
+  render() {
     if (this.state.bootstrapped == false) {
       return <View />;
     }
@@ -46,11 +46,11 @@ class RssReader extends React.Component{
           title: 'RSS Feeds',
           backButtonTitle: 'Back',
           rightButtonIcon: require('image!NavBarButtonPlus'),
-          onRightButtonPress: () => { 
+          onRightButtonPress: () => {
             this.refs.mainNav.navigator.push({
               component: NewFeed,
               title: 'New Feed',
-            }); 
+            });
           }
         }}
         tintColor="#FFFFFF"

@@ -10,11 +10,11 @@ var _feeds = [];
 var store = createStore({
 
   setState(feeds) {
-    _feeds = feeds || [];
+    _feeds = (feeds && feeds.slice()) || [];
   },
 
   getState() {
-    return _feeds;
+    return _feeds.slice();
   },
 
   dispatcherIndex: dispatcher.register((payload) => {
