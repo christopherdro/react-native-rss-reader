@@ -28,12 +28,11 @@ class NewFeed extends React.Component{
   }
 
   _addFeed() {
-    Api.fetchRss(this.state.input)
-    .then((res) => {
-      if(res.responseStatus == 200) {
-          AppActions.addFeed(res.responseData.feed);
-          this.props.navigator.pop();
-        } else {
+    Api.fetchRss(this.state.input).then((res) => {
+      if (res.responseStatus == 200) {
+        this.props.navigator.pop();
+        AppActions.addFeed(res.responseData.feed);
+      } else {
         AlertIOS.alert(res.responseDetails);
       }
     });

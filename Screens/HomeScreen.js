@@ -28,12 +28,12 @@ class HomeScreen extends React.Component {
   }
 
   componentWillMount() {
-    FeedStore.addChangeListener(this._updateFeedsFromStore);
+    FeedStore.addChangeListener(this._updateFeedsFromStore.bind(this));
     this._updateFeedsFromStore();
   }
 
   componentWillUnmount() {
-    FeedStore.removeChangeListener(this._updateFeedsFromStore);
+    FeedStore.removeChangeListener(this._updateFeedsFromStore.bind(this));
   }
 
   _updateFeedsFromStore() {
@@ -68,9 +68,9 @@ class HomeScreen extends React.Component {
 
   _renderFeed(feed:any) {
     return (
-      <TouchableHighlight 
-        underlayColor="rgba(0,0,0,.1)" 
-        onPress={() => { this._showFeedDetails(feed) }} 
+      <TouchableHighlight
+        underlayColor="rgba(0,0,0,.1)"
+        onPress={() => { this._showFeedDetails(feed) }}
         key={feed.length}>
         <View style={styles.wrapper}>
           <View style={styles.header}>
