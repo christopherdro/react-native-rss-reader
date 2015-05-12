@@ -32,8 +32,6 @@ var store = createStore({
 
     switch(action.actionType) {
       case AppConstants.ADD_FEED:
-        dispatcher.waitFor([FeedStore.dispatchToken]);
-
         var feeds = FeedStore.getState();
         AsyncStorage.setItem(KEY, JSON.stringify(feeds), (error) => {
           store.emitChange(action);
