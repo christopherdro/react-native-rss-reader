@@ -3,6 +3,7 @@
 var React = require('react-native');
 var Api = require('../Api/RssFeedApi');
 var AppActions = require('../Actions/AppActions');
+var FeedStore = require('../Stores/FeedStore');
 var _ = require('lodash');
 
 
@@ -30,8 +31,15 @@ class NewFeed extends React.Component{
   _addFeed() {
     Api.fetchRss(this.state.input).then((res) => {
       if (res.responseStatus == 200) {
-        this.props.navigator.pop();
-        AppActions.addFeed(res.responseData.feed);
+        var feeds = FeedStore.getState();
+        var resFeed = res.responseData.feed;
+        if(_.find(feeds, _.matchesProperty('feedUrl', resFeed.feedUrl))){
+          this.props.navigator.pop();
+          AlertIOS.alert('Feeds already in list');
+        } else {
+          this.props.navigator.pop();
+          AppActions.addFeed(res.responseData.feed);
+        }
       } else {
         AlertIOS.alert(res.responseDetails);
       }
