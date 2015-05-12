@@ -1,7 +1,7 @@
 'use strict';
 
 var createStore = require('flux-util').createStore;
-var dispatcher = require('../AppDispatcher');
+var dispatcher = require('../../AppDispatcher');
 var AppConstants = require('../Constants/AppConstants');
 var _ = require('lodash');
 

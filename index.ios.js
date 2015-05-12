@@ -6,9 +6,9 @@
 
 
 var React = require('react-native');
-var HomeScreen = require('./Screens/HomeScreen');
-var NewFeed = require('./Screens/NewFeed');
-var LocalStorage = require('./Stores/LocalStorage');
+var HomeScreen = require('./App/Screens/HomeScreen');
+var NewFeed = require('./App/Screens/NewFeed');
+var LocalStorage = require('./App/Stores/LocalStorage');
 
 var {
   AlertIOS,
